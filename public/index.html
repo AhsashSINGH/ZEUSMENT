@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zeusnent - Premium e-commerce platform for quality products">
+    <meta name="keywords" content="e-commerce, shopping, premium, quality, online store">
+    <title>Zeusnent - Premium Shopping Experience</title>
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/ui/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/ui/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/ui/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/quickView.css">
+    <link rel="stylesheet" href="css/advancedSearch.css">
+    
+    <!-- Theme -->
+    <script>
+        // Check for saved theme preference or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <h2>Zeusnent</h2>
+            <p>Loading premium products...</p>
+        </div>
+    </div>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-left">
+                        <span>Welcome to Zeusnent</span>
+                    </div>
+                    <div class="top-bar-right">
+                        <a href="#" class="top-bar-link"><i class="fas fa-phone"></i> +1 234 567 8900</a>
+                        <a href="#" class="top-bar-link"><i class="fas fa-envelope"></i> support@zeusnent.com</a>
+                        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.html" class="logo-link">
+                            <span class="logo-text">Zeusnent</span>
+                        </a>
+                    </div>
+
+                    <!-- Main Menu -->
+                    <ul class="nav-menu" id="nav-menu">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link active">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Categories <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu" id="categories-menu">
+                                <!-- Categories will be loaded dynamically -->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html" class="nav-link">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="deals.html" class="nav-link">Deals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Actions -->
+                    <div class="nav-actions">
+                        <!-- Search -->
+                        <div class="search-container" id="search-container">
+                            <input type="text" class="search-input" id="search-input" placeholder="Search products...">
+                            <button class="search-btn" id="search-btn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <div class="search-results" id="search-results">
+                                <!-- Search results will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- User Account -->
+                        <div class="user-menu" id="user-menu">
+                            <button class="user-btn" id="user-btn">
+                                <i class="fas fa-user"></i>
+                            </button>
+                            <div class="user-dropdown" id="user-dropdown">
+                                <div id="auth-buttons">
+                                    <a href="login.html" class="btn btn-outline">Login</a>
+                                    <a href="register.html" class="btn btn-primary">Register</a>
+                                </div>
+                                <div id="user-info" style="display: none;">
+                                    <div class="user-avatar">
+                                        <img src="images/users/default-avatar.png" alt="User Avatar" id="user-avatar">
+                                    </div>
+                                    <div class="user-details">
+                                        <p class="user-name" id="user-name">John Doe</p>
+                                        <p class="user-email" id="user-email">john@example.com</p>
+                                    </div>
+                                    <div class="user-actions">
+                                        <a href="profile.html" class="user-action-link">
+                                            <i class="fas fa-user-circle"></i> Profile
+                                        </a>
+                                        <a href="orders.html" class="user-action-link">
+                                            <i class="fas fa-box"></i> Orders
+                                        </a>
+                                        <a href="wishlist.html" class="user-action-link">
+                                            <i class="fas fa-heart"></i> Wishlist
+                                        </a>
+                                        <button class="user-action-link logout-btn" id="logout-btn">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wishlist -->
+                        <a href="wishlist.html" class="nav-action" id="wishlist-link">
+                            <i class="fas fa-heart"></i>
+                            <span class="action-count" id="wishlist-count">0</span>
+                        </a>
+
+                        <!-- Cart -->
+                        <a href="cart.html" class="nav-action cart-action" id="cart-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="action-count" id="cart-count">0</span>
+                        </a>
+
+                        <!-- Mobile Menu Toggle -->
+                        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-slider" id="hero-slider">
+                <div class="hero-slide active">
+                    <div class="hero-background">
+                        <img src="images/banners/hero-1.jpg" alt="Hero Background">
+                    </div>
+                    <div class="hero-content">
+                        <div class="container">
+                            <h1 class="hero-title">Premium Quality Products</h1>
+                            <p class="hero-subtitle">Discover amazing deals on top-quality items</p>
+                            <div class="hero-actions">
+                                <a href="products.html" class="btn btn-primary btn-large">
+                                    <i class="fas fa-shopping-bag"></i> Shop Now
+                                </a>
+                                <a href="#featured-products" class="btn btn-outline btn-large">
+                                    <i class="fas fa-star"></i> View Deals
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-slide">
+                    <div class="hero-background">
+                        <img src="images/banners/hero-2.jpg" alt="Hero Background">
+                    </div>
+                    <div class="hero-content">
+                        <div class="container">
+                            <h1 class="hero-title">New Arrivals</h1>
+                            <p class="hero-subtitle">Check out our latest collection</p>
+                            <div class="hero-actions">
+                                <a href="products.html?category=new" class="btn btn-primary btn-large">
+                                    <i class="fas fa-sparkles"></i> Explore New
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hero Controls -->
+            <div class="hero-controls">
+                <button class="hero-control prev" id="hero-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="hero-control next" id="hero-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Hero Indicators -->
+            <div class="hero-indicators" id="hero-indicators">
+                <button class="indicator active" data-slide="0"></button>
+                <button class="indicator" data-slide="1"></button>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Free Shipping</h3>
+                        <p>On orders over $50</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Payment</h3>
+                        <p>100% secure transactions</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>30-day return policy</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated customer service</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Shop by Category</h2>
+                    <p>Browse our wide range of products</p>
+                </div>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="featured-products" id="featured-products">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Products</h2>
+                    <p>Handpicked items just for you</p>
+                    <div class="section-actions">
+                        <a href="products.html?featured=true" class="btn btn-outline">View All</a>
+                    </div>
+                </div>
+                <div class="products-grid" id="featured-products-grid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Products Section -->
+        <section class="trending-products">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Trending Now</h2>
+                    <p>Most popular products this week</p>
+                    <div class="section-actions">
+                        <a href="products.html?sort=trending" class="btn btn-outline">View All</a>
+                    </div>
+                </div>
+                <div class="products-carousel" id="trending-carousel">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <h2>Summer Sale</h2>
+                    <p>Get up to 50% off on selected items</p>
+                    <a href="deals.html" class="btn btn-primary">Shop Sale</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>Stay Updated</h2>
+                    <p>Subscribe to get special offers and updates</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zeusnent</h3>
+                    <p>Your premium shopping destination for quality products and exceptional service.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul class="footer-links" id="footer-categories">
+                        <!-- Categories will be loaded dynamically -->
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Shopping St, Commerce City, CC 12345</p>
+                        <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                        <p><i class="fas fa-envelope"></i> support@zeusnent.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zeusnent. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quick-view-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="quick-view-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="quick-view-content" id="quick-view-content">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/interactive.js"></script>
+    <script src="js/quickView.js"></script>
+    <script src="js/advancedSearch.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
